@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Crimson Text', serif;
+            background: linear-gradient(to bottom right, #CDF0EA, #F9F9F9, #F7DBF0, #BEAEE2);
+            color: black;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        input[type="text"],
+        input[type="password"],
+        input[type="submit"],
+        button {
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            outline: none;
+        }
+        input[type="submit"],
+        button {
+            background-color: #F7DBF0;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+        }
+        input[type="submit"]:hover,
+        button:hover {
+            background-color: #BEAEE2;
+            transform: translateY(-2px);
+            box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+        .forget-password {
+            margin-top: 10px;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        .notification {
+            background-color: #F7DBF0;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Document Locker</h1>
+    <img src="static/lo.gif" alt="Your GIF" width="600" height="300" style="border-radius: 20px;">
+    <h2>Login</h2>
+    <form method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username"><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br><br>
+        <input type="submit" value="Login">
+    </form>
+    <p class="forget-password" onclick="showNotification()">Forgot password?</p>
+    <div id="notification" class="notification" style="display: none;">
+        Check your Manage Password tool for assistance.
+    </div>
+    <script>
+        function showNotification() {
+            var notification = document.getElementById('notification');
+            notification.style.display = 'block';
+            setTimeout(function() {
+                notification.style.display = 'none';
+            }, 10000); // Hide notification after 3 seconds
+        }
+    </script>
+    {% if error %}
+        <p class="error">Invalid username or password.</p>
+    {% endif %}
+</body>
+</html>
